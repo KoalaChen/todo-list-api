@@ -1,0 +1,421 @@
+{
+	"info": {
+		"_postman_id": "43a05d6f-cdcc-409c-80fa-dbaa715b20b8",
+		"name": "待辦",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1539309"
+	},
+	"item": [
+		{
+			"name": "取得所有待辦",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增單筆待辦1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"第1個待辦\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增單筆待辦2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"第2個待辦\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增單筆待辦錯誤-title空值",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增單筆待辦錯誤-JSON格式錯誤",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" \"第一筆\"\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增單筆待辦錯誤-無資料",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新單筆待辦-正常編輯",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"今天要倒垃圾\",\r\n    \"completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/3c21ddea-a9f8-4f55-a964-450d28120f7f",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						"3c21ddea-a9f8-4f55-a964-450d28120f7f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新單筆待辦-json格式錯誤",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"今天要倒垃圾\"\r\n    \"completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/3c21ddea-a9f8-4f55-a964-450d28120f7f",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						"3c21ddea-a9f8-4f55-a964-450d28120f7f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新單筆待辦-title空值",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"\",\r\n    \"completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/3c21ddea-a9f8-4f55-a964-450d28120f7f",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						"3c21ddea-a9f8-4f55-a964-450d28120f7f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新單筆待辦-空白資料",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/3c21ddea-a9f8-4f55-a964-450d28120f7f",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						"3c21ddea-a9f8-4f55-a964-450d28120f7f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新單筆待辦-id錯誤",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"今天要倒垃圾\",\r\n    \"completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/unkonwn",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						"unkonwn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除單筆待辦-正常資料",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/70be6b38-93b8-4aff-9937-ae993b46a52b",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						"70be6b38-93b8-4aff-9937-ae993b46a52b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除單筆待辦-全部資料",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"今天要倒垃圾\",\r\n    \"completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/removeAll",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						"removeAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CORS",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"今天要倒垃圾\",\r\n    \"completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
