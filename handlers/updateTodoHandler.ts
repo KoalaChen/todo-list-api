@@ -10,7 +10,7 @@ export class UpdateTodoHandler implements UrlMethodHandler {
         
     }
     check(req: http.IncomingMessage) {
-        return !!(req.url?.match(/^\/todos\/[a-zA-Z0-9\-]+$/)) && req.method === 'PUT';
+        return !!(req.url?.match(/^\/todos\/[a-zA-Z0-9\-]+$/)) && req.method === 'PATCH';
     }
 
     async handle(req: http.IncomingMessage, res: http.ServerResponse) {
@@ -18,7 +18,7 @@ export class UpdateTodoHandler implements UrlMethodHandler {
         const id = url.split('/').pop() as string;
         const body = await createResquestBodyPromise(req);
         let content : Partial<TodoItem> | null = null;
-        console.log(`PUT[${id}]更新`);
+        console.log(`PATCH[${id}]更新`);
         const todoData = this.getTodoFunc().find((todo) => todo.id === id);
         if (!todoData) {
             res.writeHead(404);
@@ -32,7 +32,7 @@ export class UpdateTodoHandler implements UrlMethodHandler {
         try {
             content = JSON.parse(body);
         } catch (error) {
-            console.error(`PUT[${id}]解析失敗`, error);
+            console.error(`PATCH[${id}]解析失敗`, error);
             res.writeHead(400);
             const errorResult: ErrorResult = {
                 status: "error",

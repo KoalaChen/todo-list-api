@@ -226,7 +226,7 @@ test('新增待辦POST-資料是 null，應回傳400錯誤', async () => {
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(exportData);
 });
-test('修改待辦PUT-標題應修改成功', async () => {
+test('修改待辦PATCH-標題應修改成功', async () => {
   // arrange
   // 取得第一筆待辦
   const url = `${baseUrl}/todos`;
@@ -246,7 +246,7 @@ test('修改待辦PUT-標題應修改成功', async () => {
   const expectedStatus = 200;
   // act
   const res = await fetch(editUrl, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(editedTodo)
   })
@@ -255,7 +255,7 @@ test('修改待辦PUT-標題應修改成功', async () => {
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
 });
-test('修改待辦PUT-標題空值，應修改失敗', async () => {
+test('修改待辦PATCH-標題空值，應修改失敗', async () => {
   // arrange
   // 取得第一筆待辦
   const url = `${baseUrl}/todos`;
@@ -274,7 +274,7 @@ test('修改待辦PUT-標題空值，應修改失敗', async () => {
   const expectedStatus = 400;
   // act
   const res = await fetch(editUrl, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(editedTodo)
   })
@@ -283,7 +283,7 @@ test('修改待辦PUT-標題空值，應修改失敗', async () => {
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
 });
-test('修改待辦PUT-JSON格式錯誤，應修改失敗', async () => {
+test('修改待辦PATCH-JSON格式錯誤，應修改失敗', async () => {
   // arrange
   // 取得第一筆待辦
   const url = `${baseUrl}/todos`;
@@ -298,7 +298,7 @@ test('修改待辦PUT-JSON格式錯誤，應修改失敗', async () => {
   const expectedStatus = 400;
   // act
   const res = await fetch(editUrl, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: '{invalid}'
   })
@@ -307,7 +307,7 @@ test('修改待辦PUT-JSON格式錯誤，應修改失敗', async () => {
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
 });
-test('修改待辦PUT-資料不存在，應回傳404', async () => {
+test('修改待辦PATCH-資料不存在，應回傳404', async () => {
   // arrange
   // 修改成已完成
   const editUrl = `${baseUrl}/todos/fakeId`;
@@ -318,7 +318,7 @@ test('修改待辦PUT-資料不存在，應回傳404', async () => {
   const expectedStatus = 404;
   // act
   const res = await fetch(editUrl, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: '{}'
   })
