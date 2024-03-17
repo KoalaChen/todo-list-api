@@ -368,3 +368,16 @@ test('DELETE 全部資料，結果應有0筆', async () => {
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(exportData);
 });
+
+test('OPTIONS 取得CORS', async () => {
+  // arrange
+  const url = `${baseUrl}/todos`;
+  const expectedStatus = 200;
+
+  // act
+  const res = await fetch(url, {
+    method: 'OPTIONS'
+  });
+  // assert
+  expect(res.status).toBe(expectedStatus);
+});

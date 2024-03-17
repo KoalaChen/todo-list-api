@@ -8,6 +8,7 @@ import { ResetDataHandler } from './handlers/resetDataHandler';
 import { RemoveAllHandler } from './handlers/removalAllHandler';
 import { UpdateTodoHandler } from './handlers/updateTodoHandler';
 import { RemoveOneHandler } from './handlers/removalOneHandler';
+import { CorsHandler } from './handlers/corsHandler';
 const port = process.env.PORT || 3005;
 let data: TodoItem[] = [];
 
@@ -24,6 +25,8 @@ const urlMethodHandlers: UrlMethodHandler[] = [
     new RemoveAllHandler(() => data.length = 0),
     // 移除單筆資料
     new RemoveOneHandler(() => data),
+    // 新增 OPTONS 跨來源請求
+    new CorsHandler(),
     // 無對應資料(放在最後面)
     new NotFoundTodoHandler(),
 ];
