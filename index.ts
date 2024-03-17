@@ -7,6 +7,7 @@ import { PostTodosHandler } from './handlers/postTodosHandler';
 import { ResetDataHandler } from './handlers/resetDataHandler';
 import { RemoveAllHandler } from './handlers/removalAllHandler';
 import { UpdateTodoHandler } from './handlers/updateTodoHandler';
+import { RemoveOneHandler } from './handlers/removalOneHandler';
 const port = process.env.PORT || 3005;
 let data: TodoItem[] = [];
 
@@ -21,6 +22,8 @@ const urlMethodHandlers: UrlMethodHandler[] = [
     new UpdateTodoHandler(()=> data),
     // 移除全部資料
     new RemoveAllHandler(() => data.length = 0),
+    // 移除單筆資料
+    new RemoveOneHandler(() => data),
     // 無對應資料(放在最後面)
     new NotFoundTodoHandler(),
 ];

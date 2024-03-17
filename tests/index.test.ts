@@ -327,17 +327,22 @@ test('修改待辦PUT-資料不存在，應回傳404', async () => {
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
 });
-test('DELETE 移除一筆資料，結果應有0筆', async () => {
+test('DELETE 移除一筆資料，結果會少1筆', async () => {
   // arrange
-  const url = `${baseUrl}/todos/removeAll`;
+  // 取得第一筆待辦
+  const url = `${baseUrl}/todos`;
+  const todoList: SuccessResult = await (await fetch(url)).json() as SuccessResult;
+  const todo = todoList.data[0];
+  // arrange
+  const deleteItemUrl = `${baseUrl}/todos/${todo.id}`;
   const expectedStatus = 200;
   const exportData: SuccessTodoReturn = {
     status: "success",
-    data: []
+    data: todoList.data.slice(1)
   };
 
   // act
-  const res = await fetch(url, {
+  const res = await fetch(deleteItemUrl, {
     method: 'DELETE'
   });
   const data = await res.json();
