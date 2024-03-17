@@ -43,6 +43,19 @@ test('GET /todos 應回傳空陣列', async ({}) => {
   // assert
   expect(data).toEqual(expected);
 });
+test('GET /todos/ 應回傳空陣列', async ({}) => {
+  // arrange
+  const url = `${baseUrl}/todos`;
+  const expected: SuccessTodoReturn = {
+    status: "success",
+    data: []
+  };
+  // act
+  const res = await fetch(url);
+  const data = await res.json();
+  // assert
+  expect(data).toEqual(expected);
+});
 
 test('錯誤網址，應回傳 404', async ({}) => {
   // arrange
@@ -88,7 +101,7 @@ test('新增待辦POST-1筆，結果應有1筆', async () => {
 });
 test('新增待辦POST-第2筆，結果應有2筆', async () => {
   // arrange
-  const url = `${baseUrl}/todos`;
+  const url = `${baseUrl}/todos/`;
   const newTodo: NewTodoType = {
     title: '第二筆待辦'
   };

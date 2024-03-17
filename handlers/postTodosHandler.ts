@@ -16,7 +16,7 @@ export class PostTodosHandler implements UrlMethodHandler {
         
     }
     check(req: http.IncomingMessage): boolean {
-        return req.url === '/todos' && req.method === 'POST';
+        return ['/todos', '/todos/'].includes(req.url || '') && req.method === 'POST';
     }
 
     handle(request: http.IncomingMessage, response: http.ServerResponse): void {

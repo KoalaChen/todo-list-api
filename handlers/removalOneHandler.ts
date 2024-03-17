@@ -10,7 +10,6 @@ export class RemoveOneHandler implements UrlMethodHandler {
         
     }
     check(req: IncomingMessage) {
-        console.log('req.url', req.url);
         return !!(req.url?.match(/^\/todos\/[a-zA-Z0-9\-]+$/)) && req.method === 'DELETE';
     }
 

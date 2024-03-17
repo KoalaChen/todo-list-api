@@ -10,7 +10,7 @@ export class GetTodosHandler implements UrlMethodHandler {
         private readonly getTodosFunc:() => readonly TodoItem[]) {
     }
     check(req: http.IncomingMessage): boolean {
-        return req.url === '/todos' && req.method === 'GET';
+        return ['/todos', '/todos/'].includes(req.url || '') && req.method === 'GET';
     }
     handle(request: http.IncomingMessage, response: http.ServerResponse): void {
         response.writeHead(200, DefaultHeaders.getDefaults());

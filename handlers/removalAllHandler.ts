@@ -10,7 +10,6 @@ export class RemoveAllHandler implements UrlMethodHandler {
         
     }
     check(req: IncomingMessage) {
-        console.log('req.url', req.url);
         return req.url === '/todos/removeAll' && req.method === 'DELETE';
     }
 
