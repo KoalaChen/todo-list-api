@@ -1,5 +1,6 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { UrlMethodHandler } from "../urlMethodHandler";
+import { DefaultHeaders } from "../defaultHeaders";
 
 export class ResetDataHandler implements UrlMethodHandler {
     constructor(
@@ -13,7 +14,7 @@ export class ResetDataHandler implements UrlMethodHandler {
 
     handle(req: IncomingMessage, res: ServerResponse<IncomingMessage>) {
         this.resetDataFunc();
-        res.writeHead(200);
+        res.writeHead(200, DefaultHeaders.getDefaults());
         res.end();
     }
 }

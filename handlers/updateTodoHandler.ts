@@ -3,6 +3,7 @@ import { createResquestBodyPromise } from '../requestUtil';
 import { UrlMethodHandler } from '../urlMethodHandler';
 import { TodoItem } from '../todoItem';
 import { ErrorResult } from '../errorResult';
+import { DefaultHeaders } from '../defaultHeaders';
 export class UpdateTodoHandler implements UrlMethodHandler {
     constructor(
         private readonly getTodoFunc: () => TodoItem[]
@@ -21,7 +22,7 @@ export class UpdateTodoHandler implements UrlMethodHandler {
         console.log(`PATCH[${id}]更新`);
         const todoData = this.getTodoFunc().find((todo) => todo.id === id);
         if (!todoData) {
-            res.writeHead(404);
+            res.writeHead(404, DefaultHeaders.getDefaults());
             const errorResult: ErrorResult = {
                 status: "error",
                 message: "找不到資料"
@@ -33,7 +34,7 @@ export class UpdateTodoHandler implements UrlMethodHandler {
             content = JSON.parse(body);
         } catch (error) {
             console.error(`PATCH[${id}]解析失敗`, error);
-            res.writeHead(400);
+            res.writeHead(400, DefaultHeaders.getDefaults());
             const errorResult: ErrorResult = {
                 status: "error",
                 message: "欄位未填寫正確"
@@ -42,7 +43,7 @@ export class UpdateTodoHandler implements UrlMethodHandler {
             return;
         }
         if (!content) {
-            res.writeHead(400);
+            res.writeHead(400, DefaultHeaders.getDefaults());
             const errorResult: ErrorResult = {
                 status: "error",
                 message: "欄位未填寫正確"
@@ -51,7 +52,7 @@ export class UpdateTodoHandler implements UrlMethodHandler {
             return;
         }
         if (!content.title) {
-            res.writeHead(400);
+            res.writeHead(400, DefaultHeaders.getDefaults());
             const errorResult: ErrorResult = {
                 status: "error",
                 message: "欄位未填寫正確"
@@ -62,8 +63,7 @@ export class UpdateTodoHandler implements UrlMethodHandler {
 
         todoData.title = content.title || todoData.title;
         todoData.completed = typeof(content.completed) === 'boolean' ? content.completed : todoData.completed;
-        res.writeHead(200);
-        res.write
+        res.writeHead(200, DefaultHeaders.getDefaults());
         res.end(JSON.stringify(todoData));
     }
 }

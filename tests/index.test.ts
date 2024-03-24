@@ -179,6 +179,7 @@ test('新增待辦POST-資料空值，應回傳400錯誤', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(exportData);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 test('新增待辦POST-JSON 格式有誤，應回傳400錯誤', async () => {
   // arrange
@@ -202,6 +203,7 @@ test('新增待辦POST-JSON 格式有誤，應回傳400錯誤', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(exportData);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 test('新增待辦POST-資料是 null，應回傳400錯誤', async () => {
   // arrange
@@ -225,6 +227,7 @@ test('新增待辦POST-資料是 null，應回傳400錯誤', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(exportData);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 test('修改待辦PATCH-標題應修改成功', async () => {
   // arrange
@@ -254,6 +257,7 @@ test('修改待辦PATCH-標題應修改成功', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 test('修改待辦PATCH-標題空值，應修改失敗', async () => {
   // arrange
@@ -282,6 +286,7 @@ test('修改待辦PATCH-標題空值，應修改失敗', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 test('修改待辦PATCH-JSON格式錯誤，應修改失敗', async () => {
   // arrange
@@ -306,6 +311,7 @@ test('修改待辦PATCH-JSON格式錯誤，應修改失敗', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 test('修改待辦PATCH-資料不存在，應回傳404', async () => {
   // arrange
@@ -326,6 +332,7 @@ test('修改待辦PATCH-資料不存在，應回傳404', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 test('DELETE-移除資料不存在，應回傳404', async () => {
   // arrange
@@ -345,6 +352,7 @@ test('DELETE-移除資料不存在，應回傳404', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 test('DELETE 移除一筆資料，結果會少1筆', async () => {
   // arrange
