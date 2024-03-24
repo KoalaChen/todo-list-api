@@ -327,6 +327,25 @@ test('修改待辦PATCH-資料不存在，應回傳404', async () => {
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(expected);
 });
+test('DELETE-移除資料不存在，應回傳404', async () => {
+  // arrange
+  // 修改成已完成
+  const editUrl = `${baseUrl}/todos/fakeId`;
+  const expected: ErrorResult = {
+      status: 'error',
+      message: '找不到欲刪除之待辦事項'
+    };
+  const expectedStatus = 404;
+  // act
+  const res = await fetch(editUrl, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }
+  })
+  const data = await res.json();
+  // assert
+  expect(res.status).toBe(expectedStatus);
+  expect(data).toEqual(expected);
+});
 test('DELETE 移除一筆資料，結果會少1筆', async () => {
   // arrange
   // 取得第一筆待辦
@@ -349,6 +368,7 @@ test('DELETE 移除一筆資料，結果會少1筆', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(exportData);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 test('DELETE 全部資料，結果應有0筆', async () => {
   // arrange
@@ -367,6 +387,7 @@ test('DELETE 全部資料，結果應有0筆', async () => {
   // assert
   expect(res.status).toBe(expectedStatus);
   expect(data).toEqual(exportData);
+  expect(res.headers.get('Content-Type')).toBe('application/json');
 });
 
 test('OPTIONS 取得CORS', async () => {

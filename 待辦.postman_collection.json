@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "43a05d6f-cdcc-409c-80fa-dbaa715b20b8",
-		"name": "待辦",
+		"name": "TodoList-待辦",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1539309"
 	},
@@ -352,6 +352,36 @@
 					"path": [
 						"todos",
 						"70be6b38-93b8-4aff-9937-ae993b46a52b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除單筆待辦-查無資料",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://todo-list-api-x874.onrender.com/todos/fakeId",
+					"protocol": "https",
+					"host": [
+						"todo-list-api-x874",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"todos",
+						"fakeId"
 					]
 				}
 			},
